@@ -30,7 +30,7 @@ export function describe(program: Program): ProgramInfo {
     case "welcome":
       return { id: "welcome", title: "Welcome", icon: null, width: 500, height: 290, dialog: true };
     case "about":
-      return { id: "about", title: "About Me", icon: <ComputerIcon size={16} />, width: 540, height: 470, dialog: false };
+      return { id: "about", title: "About Me", icon: <ComputerIcon size={16} />, width: 540, height: 500, dialog: false };
     case "resume":
       return {
         id: "resume",
@@ -49,7 +49,7 @@ export function describe(program: Program): ProgramInfo {
         title: app.name,
         icon: <Image src={app.icon} alt="" width={16} height={16} />,
         width: 720,
-        height: 580,
+        height: 620,
         dialog: false,
       };
     }
@@ -71,7 +71,7 @@ export function describe(program: Program): ProgramInfo {
         title: app.name,
         icon: <Image src={app.icon} alt="" width={16} height={16} />,
         width: 420,
-        height: 250,
+        height: 280,
         dialog: true,
       };
     }
