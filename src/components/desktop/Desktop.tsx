@@ -22,7 +22,7 @@ type Shortcut = {
 
 const shortcuts: Shortcut[] = [
   { id: "about", label: "About Me", icon: <ComputerIcon />, action: { program: { type: "about" } } },
-  { id: "resume", label: "Resume.doc", icon: <DocumentIcon />, action: { program: { type: "resume" } } },
+  { id: "resume", label: "Resume.pdf", icon: <DocumentIcon />, action: { program: { type: "resume" } } },
   { id: "apps", label: "My Apps", icon: <FolderIcon />, action: { program: { type: "apps" } } },
   ...apps.map((app) => ({
     id: `app-${app.name}`,
@@ -31,6 +31,7 @@ const shortcuts: Shortcut[] = [
     shortcut: true,
     action: { program: { type: "app", name: app.name } as Program },
   })),
+  { id: "work", label: "Work Apps", icon: <FolderIcon />, action: { program: { type: "work" } } },
   { id: "repos", label: "My Repos", icon: <FolderIcon />, action: { program: { type: "repos" } } },
   { id: "github", label: "GitHub", icon: <GlobeIcon />, shortcut: true, action: { href: profile.github } },
   { id: "linkedin", label: "LinkedIn", icon: <GlobeIcon />, shortcut: true, action: { href: profile.linkedin } },
@@ -149,6 +150,7 @@ const startItems: { label: string; icon: React.ReactNode; action: Shortcut["acti
   { label: "About Me", icon: <ComputerIcon size={24} />, action: { program: { type: "about" } } },
   { label: "Resume", icon: <DocumentIcon size={24} />, action: { program: { type: "resume" } } },
   { label: "My Apps", icon: <FolderIcon size={24} />, action: { program: { type: "apps" } } },
+  { label: "Apps I've Worked On", icon: <FolderIcon size={24} />, action: { program: { type: "work" } } },
   { label: "My Repos", icon: <FolderIcon size={24} />, action: { program: { type: "repos" } } },
   { label: "GitHub", icon: <GlobeIcon size={24} />, action: { href: profile.github } },
   { label: "LinkedIn", icon: <GlobeIcon size={24} />, action: { href: profile.linkedin } },

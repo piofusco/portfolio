@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { apps, education, experience, profile, repos, skills, type App, type Repo } from "@/data";
+import { apps, education, experience, profile, repos, skills, workApps, type App, type Repo } from "@/data";
 
 const navLinks = [
   { href: "#apps", label: "Apps" },
+  { href: "#work", label: "Work" },
   { href: "#code", label: "Code" },
   { href: "#experience", label: "Experience" },
 ];
@@ -49,6 +50,24 @@ export default function Classic() {
             ))}
           </div>
         </Section>
+        <Section id="work" title="Apps I've worked on" subtitle="At Fanatics, Specialized, Ibotta, and Angi">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {workApps.map((app) => (
+              <a
+                key={app.name}
+                href={app.appStore}
+                className="flex gap-4 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-accent"
+              >
+                <Image src={app.icon} alt="" width={56} height={56} className="h-14 w-14 shrink-0 rounded-xl" />
+                <div>
+                  <h3 className="font-semibold">{app.name}</h3>
+                  <p className="text-sm text-accent">{app.company}</p>
+                  <p className="mt-2 text-sm text-muted">{app.summary}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </Section>
         <Section id="code" title="Code" subtitle="Libraries, tools, and experiments">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {repos.map((repo) => (
@@ -65,7 +84,7 @@ export default function Classic() {
                   <h3 className="font-semibold">
                     {job.role} · <span className="text-accent">{job.company}</span>
                   </h3>
-                  <p className="mt-1 text-muted">{job.summary}</p>
+                  {job.summary && <p className="mt-1 text-muted">{job.summary}</p>}
                   {job.highlights.length > 0 && (
                     <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm">
                       {job.highlights.map((h) => (
@@ -101,6 +120,14 @@ export default function Classic() {
 function Hero() {
   return (
     <section className="py-20 sm:py-28">
+      <Image
+        src={profile.photo}
+        alt={profile.name}
+        width={112}
+        height={112}
+        preload
+        className="mb-8 h-28 w-28 rounded-full object-cover"
+      />
       <p className="text-sm font-medium uppercase tracking-widest text-accent">{profile.title}</p>
       <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-6xl">{profile.name}</h1>
       <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{profile.summary}</p>
@@ -157,7 +184,7 @@ function Section({
 
 function AppCard({ app }: { app: App }) {
   return (
-    <article className="grid gap-8 rounded-3xl border border-border bg-card p-6 sm:p-8 lg:grid-cols-[1fr_auto]">
+    <article className="grid gap-8 rounded-3xl border border-border bg-card p-6 sm:p-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
       <div className="flex flex-col">
         <div className="flex items-center gap-4">
           <Image src={app.icon} alt="" width={72} height={72} className="rounded-2xl shadow-sm" />
@@ -190,7 +217,7 @@ function AppCard({ app }: { app: App }) {
           )}
         </div>
       </div>
-      <div className="-mx-2 flex gap-3 overflow-x-auto px-2 pb-2">
+      <div className="-mx-2 flex min-w-0 gap-3 overflow-x-auto px-2 pb-2">
         {app.screenshots.map((src, i) => (
           <Image
             key={src}

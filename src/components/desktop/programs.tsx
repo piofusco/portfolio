@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { apps, education, experience, profile, repos, skills, type App, type Repo } from "@/data";
+import { apps, education, profile, repos, skills, workApps, type App, type Repo, type WorkApp } from "@/data";
 import { ComputerIcon, DocumentIcon, ErrorIcon, FolderIcon, ShortcutBadge } from "./icons";
 
 export type Program =
@@ -12,6 +12,8 @@ export type Program =
   | { type: "apps" }
   | { type: "app"; name: string }
   | { type: "repos" }
+  | { type: "work" }
+  | { type: "workApp"; name: string }
   | { type: "denied"; repo: string };
 
 export type ProgramInfo = {
@@ -32,10 +34,10 @@ export function describe(program: Program): ProgramInfo {
     case "resume":
       return {
         id: "resume",
-        title: "Resume.doc - WordPad",
+        title: "Resume.pdf",
         icon: <DocumentIcon size={16} />,
-        width: 700,
-        height: 580,
+        width: 720,
+        height: 640,
         dialog: false,
       };
     case "apps":
@@ -53,6 +55,26 @@ export function describe(program: Program): ProgramInfo {
     }
     case "repos":
       return { id: "repos", title: "My Repos", icon: <FolderIcon size={16} />, width: 660, height: 380, dialog: false };
+    case "work":
+      return {
+        id: "work",
+        title: "Apps I've Worked On",
+        icon: <FolderIcon size={16} />,
+        width: 520,
+        height: 320,
+        dialog: false,
+      };
+    case "workApp": {
+      const app = findWorkApp(program.name);
+      return {
+        id: `work-${program.name}`,
+        title: app.name,
+        icon: <Image src={app.icon} alt="" width={16} height={16} />,
+        width: 420,
+        height: 250,
+        dialog: true,
+      };
+    }
     case "denied":
       return { id: `denied-${program.repo}`, title: "Error", icon: null, width: 380, height: 150, dialog: true };
   }
@@ -60,6 +82,10 @@ export function describe(program: Program): ProgramInfo {
 
 function findApp(name: string): App {
   return apps.find((app) => app.name === name) ?? apps[0];
+}
+
+function findWorkApp(name: string): WorkApp {
+  return workApps.find((app) => app.name === name) ?? workApps[0];
 }
 
 type ProgramProps = {
@@ -82,6 +108,10 @@ export function ProgramContent({ program, open, close }: ProgramProps) {
       return <AppDetail app={findApp(program.name)} close={close} />;
     case "repos":
       return <Repos open={open} />;
+    case "work":
+      return <WorkFolder open={open} />;
+    case "workApp":
+      return <WorkAppDetail app={findWorkApp(program.name)} close={close} />;
     case "denied":
       return <Denied repo={program.repo} close={close} />;
   }
@@ -103,12 +133,15 @@ function Welcome({ open, close }: Pick<ProgramProps, "open" | "close">) {
           Welcome to <b>Pace</b>
           <span className="font-bold text-white [text-shadow:1px_1px_#000]">95</span>
         </p>
-        <div className="w95-sunken mt-4 bg-[#ffffe1] p-3">
+        <div className="w95-sunken mt-4 flex gap-3 bg-[#ffffe1] p-3">
+          <Image src={profile.photo} alt="" width={64} height={64} className="h-16 w-16 shrink-0" />
+          <div>
           <p className="font-bold">Did you know...</p>
           <p className="mt-2 leading-relaxed">
             I&apos;m {profile.name}, {profile.title} in {profile.location}. Open the icons on the desktop to see my
             resume, the apps I&apos;ve shipped, and my code.
           </p>
+          </div>
         </div>
       </div>
       <div className="flex shrink-0 flex-col gap-2">
@@ -138,9 +171,13 @@ function About() {
   return (
     <div className="flex flex-1 flex-col gap-3 overflow-auto p-3">
       <div className="flex gap-4">
-        <div className="shrink-0">
-          <ComputerIcon size={64} />
-        </div>
+        <Image
+          src={profile.photo}
+          alt={profile.name}
+          width={112}
+          height={112}
+          className="w95-sunken h-28 w-28 shrink-0 bg-white p-[2px]"
+        />
         <div>
           <p className="text-base font-bold">{profile.name}</p>
           <p>{profile.title}</p>
@@ -178,34 +215,8 @@ function Resume() {
           <span>Download</span>
         </a>
       </div>
-      <div className="w95-sunken m-1 min-h-0 flex-1 overflow-auto bg-[#808080] p-2">
-        <article className="w95-doc mx-auto max-w-[640px] bg-white px-4 py-6 text-black sm:px-8 shadow-[2px_2px_#000]">
-          <h1 className="text-2xl font-bold italic">{profile.name}</h1>
-          <p className="border-b border-black pb-1">
-            {profile.title} · {profile.location} · {profile.email}
-          </p>
-          <p className="mt-3 italic">{profile.summary}</p>
-          <h2 className="mt-5 border-b border-black text-center font-bold tracking-[0.3em] uppercase">Experience</h2>
-          {experience.map((job) => (
-            <section key={`${job.company}-${job.dates}`} className="mt-4">
-              <p>
-                <b className="underline">{job.role}</b> — <b>{job.company}</b> | <i>{job.dates}</i>
-              </p>
-              <p className="mt-1 pl-4 italic">{job.summary}</p>
-              {job.highlights.length > 0 && (
-                <ul className="mt-1 list-disc pl-10">
-                  {job.highlights.map((h) => (
-                    <li key={h}>{h}</li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ))}
-          <h2 className="mt-5 border-b border-black text-center font-bold tracking-[0.3em] uppercase">Skills</h2>
-          <p className="mt-2">{skills.join(", ")}</p>
-          <h2 className="mt-5 border-b border-black text-center font-bold tracking-[0.3em] uppercase">Education</h2>
-          <p className="mt-2 text-center font-bold italic">{education}</p>
-        </article>
+      <div className="w95-sunken m-1 min-h-0 flex-1 bg-[#808080] p-[2px]">
+        <iframe src={profile.resume} title={`${profile.name} resume`} className="h-full w-full bg-white" />
       </div>
     </>
   );
@@ -293,6 +304,56 @@ function AppDetail({ app, close }: { app: App; close: () => void }) {
             <span>Source</span>
           </button>
         )}
+        <button type="button" className="w95-btn" onClick={close}>
+          <span>Close</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function WorkFolder({ open }: Pick<ProgramProps, "open">) {
+  const [selected, setSelected] = useState<string | null>(null);
+  return (
+    <>
+      <AddressBar path="C:\Apps I've Worked On" />
+      <div
+        role="listbox"
+        aria-label="Apps I've worked on"
+        className="w95-folder w95-sunken mx-1 flex min-h-0 flex-1 flex-wrap content-start gap-2 overflow-auto bg-white p-3"
+        onClick={(e) => e.target === e.currentTarget && setSelected(null)}
+      >
+        {workApps.map((app) => (
+          <IconButton
+            key={app.name}
+            label={app.name}
+            selected={selected === app.name}
+            onSelect={() => setSelected(app.name)}
+            onOpen={() => open({ type: "workApp", name: app.name })}
+            icon={<Image src={app.icon} alt="" width={32} height={32} className="rounded-md" />}
+          />
+        ))}
+      </div>
+      <StatusBar text={`${workApps.length} object(s)`} />
+    </>
+  );
+}
+
+function WorkAppDetail({ app, close }: { app: WorkApp; close: () => void }) {
+  return (
+    <div className="flex flex-1 flex-col gap-3 overflow-auto p-3">
+      <div className="flex items-start gap-3">
+        <Image src={app.icon} alt="" width={48} height={48} className="shrink-0 rounded-lg" />
+        <div>
+          <p className="text-base font-bold">{app.name}</p>
+          <p>{app.company}</p>
+          <p className="mt-2 leading-relaxed">{app.summary}</p>
+        </div>
+      </div>
+      <div className="mt-auto flex justify-end gap-2">
+        <button type="button" className="w95-btn" onClick={() => openExternal(app.appStore)}>
+          <span>View on the App Store</span>
+        </button>
         <button type="button" className="w95-btn" onClick={close}>
           <span>Close</span>
         </button>

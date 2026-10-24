@@ -8,6 +8,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/americopace/",
   github: "https://github.com/piofusco",
   resume: "/michael-pace-resume.pdf",
+  photo: "/profile.jpg",
   summary:
     "Senior iOS engineer with over a decade of experience building and scaling mobile apps across greenfield, legacy, and high-traffic environments. I care about clean architecture, automated testing, and tooling that makes teams faster.",
 };
@@ -23,6 +24,10 @@ export type App = {
   tags: string[];
 };
 
+function screenshots(app: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `/apps/${app}/shot${i + 1}.png`);
+}
+
 export const apps: App[] = [
   {
     name: "Secnds",
@@ -30,7 +35,7 @@ export const apps: App[] = [
     description:
       "HIIT, circuit, and round timers plus gym workouts with sets, reps, and supersets. Spoken interval coaching, Apple Health logging, and your music keeps playing.",
     icon: "/apps/secnds/icon.png",
-    screenshots: ["/apps/secnds/shot1.png", "/apps/secnds/shot2.png", "/apps/secnds/shot3.png"],
+    screenshots: screenshots("secnds", 10),
     appStore: "https://apps.apple.com/us/app/secnds/id6758421780",
     tags: ["SwiftUI", "SwiftData", "Swift 6", "HealthKit", "StoreKit"],
   },
@@ -40,7 +45,7 @@ export const apps: App[] = [
     description:
       "A simple, private bowling scorekeeper. Enter throws frame by frame and full ten-pin scoring is handled for you, with history and iCloud sync across iPhone and iPad.",
     icon: "/apps/lanesnap/icon.png",
-    screenshots: ["/apps/lanesnap/shot1.png", "/apps/lanesnap/shot2.png", "/apps/lanesnap/shot3.png"],
+    screenshots: screenshots("lanesnap", 5),
     appStore: "https://apps.apple.com/us/app/lanesnap/id6785145368",
     tags: ["SwiftUI", "SwiftData", "CloudKit"],
   },
@@ -72,12 +77,6 @@ export const repos: Repo[] = [
     language: "Swift",
   },
   {
-    name: "Scaffold-SwiftUI",
-    description: "Scaffold iOS project using SwiftUI and async/await.",
-    language: "Swift",
-    url: "https://github.com/piofusco/Scaffold-SwiftUI",
-  },
-  {
     name: "RPN-Calculator",
     description: "Reverse Polish Notation calculator for iOS with stack display as postfix and infix.",
     language: "Objective-C",
@@ -91,6 +90,55 @@ export const repos: Repo[] = [
   },
 ];
 
+export type WorkApp = {
+  name: string;
+  company: string;
+  icon: string;
+  appStore: string;
+  summary: string;
+};
+
+// Apps I worked on as an employee or consultant.
+export const workApps: WorkApp[] = [
+  {
+    name: "Fanatics Sportsbook",
+    company: "Fanatics",
+    icon: "/work/fanatics-sportsbook.jpg",
+    appStore: "https://apps.apple.com/us/app/fanatics-sports-casino/id1616738407",
+    summary:
+      "Led greenfield iOS development. Built a WebSocket consumer handling hundreds of market updates per second at 60fps.",
+  },
+  {
+    name: "Fanatics App",
+    company: "Fanatics",
+    icon: "/work/fanatics.jpg",
+    appStore: "https://apps.apple.com/us/app/fanatics-shop-nfl-nba-mlb/id712661687",
+    summary:
+      "Greenfield rebuild of a decade-old iOS app, growing monthly revenue to $1M with a 4.8+ App Store rating.",
+  },
+  {
+    name: "Specialized Rider App",
+    company: "Specialized",
+    icon: "/work/specialized.jpg",
+    appStore: "https://apps.apple.com/us/app/specialized/id1587051382",
+    summary: "iOS app for Specialized riders and their bikes.",
+  },
+  {
+    name: "Ibotta",
+    company: "Ibotta",
+    icon: "/work/ibotta.jpg",
+    appStore: "https://apps.apple.com/us/app/ibotta-save-earn-cash-back/id559887125",
+    summary: "Redemption UX squad, improving cash back redemption reliability during a legacy system transition.",
+  },
+  {
+    name: "Angi for Pros",
+    company: "Angi",
+    icon: "/work/angi-pros.jpg",
+    appStore: "https://apps.apple.com/us/app/angi-for-pros/id437003175",
+    summary: "Refactored the contractor app for testability, cutting crash rates by 25% and regressions by 40%.",
+  },
+];
+
 export type Job = {
   role: string;
   company: string;
@@ -100,6 +148,13 @@ export type Job = {
 };
 
 export const experience: Job[] = [
+  {
+    role: "Staff iOS Engineer",
+    company: "Gusto",
+    dates: "Present",
+    summary: "",
+    highlights: [],
+  },
   {
     role: "Staff iOS Engineer",
     company: "Fanatics",
