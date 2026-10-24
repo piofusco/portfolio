@@ -1,0 +1,176 @@
+/* Windows 95 look: bevels are layered inset box-shadows, not borders. */
+
+.w95 {
+  font-family: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  color: #000;
+  -webkit-font-smoothing: none;
+}
+
+.w95-desktop {
+  background: #008080;
+}
+
+.w95-raised {
+  background: #c0c0c0;
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px #808080,
+    inset 2px 2px #dfdfdf;
+}
+
+.w95-sunken {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #808080,
+    inset -2px -2px #dfdfdf,
+    inset 2px 2px #0a0a0a;
+}
+
+.w95-status {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #808080;
+}
+
+.w95-btn {
+  background: #c0c0c0;
+  min-width: 75px;
+  min-height: 23px;
+  padding: 0 12px;
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px #808080,
+    inset 2px 2px #dfdfdf;
+}
+
+.w95-btn:active,
+.w95-btn[aria-pressed="true"] {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf,
+    inset 2px 2px #808080;
+}
+
+.w95-btn[aria-pressed="true"] {
+  background: repeating-conic-gradient(#c0c0c0 0% 25%, #fff 0% 50%) 0 0 / 2px 2px;
+  font-weight: bold;
+}
+
+.w95-btn:active > *,
+.w95-btn[aria-pressed="true"] > * {
+  transform: translate(1px, 1px);
+}
+
+.w95-btn:focus-visible,
+.w95-focus:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+.w95-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  font-weight: bold;
+  touch-action: none;
+}
+
+.w95-titlebar[data-active="false"] {
+  background: linear-gradient(90deg, #808080, #b5b5b5);
+  color: #c0c0c0;
+}
+
+.w95-titlebtn {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 14px;
+  background: #c0c0c0;
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px #808080,
+    inset 2px 2px #dfdfdf;
+}
+
+.w95-titlebtn:active {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #0a0a0a,
+    inset -2px -2px #dfdfdf,
+    inset 2px 2px #808080;
+}
+
+.w95-group {
+  border: 2px groove #f0f0f0;
+  padding: 8px 10px 10px;
+}
+
+.w95-group > legend {
+  padding: 0 3px;
+}
+
+.w95-icon-label {
+  padding: 1px 2px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.25;
+  overflow-wrap: break-word;
+}
+
+.w95-icon[aria-selected="true"] .w95-icon-label {
+  background: #000080;
+  outline: 1px dotted #ffff80;
+}
+
+.w95-icon[aria-selected="true"] .w95-icon-art {
+  filter: brightness(0.55) sepia(1) hue-rotate(190deg) saturate(4);
+}
+
+.w95-folder .w95-icon-label {
+  color: #000;
+}
+
+.w95-folder .w95-icon[aria-selected="true"] .w95-icon-label {
+  color: #fff;
+}
+
+.w95-row[aria-selected="true"] {
+  background: #000080;
+  color: #fff;
+}
+
+.w95-menuitem:hover,
+.w95-menuitem:focus-visible {
+  background: #000080;
+  color: #fff;
+  outline: none;
+}
+
+.w95-doc {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  -webkit-font-smoothing: auto;
+}
+
+.w95 ::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background: repeating-conic-gradient(#c0c0c0 0% 25%, #fff 0% 50%) 0 0 / 2px 2px;
+}
+
+.w95 ::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  box-shadow:
+    inset -1px -1px #0a0a0a,
+    inset 1px 1px #fff,
+    inset -2px -2px #808080,
+    inset 2px 2px #dfdfdf;
+}
+
+.w95 ::-webkit-scrollbar-corner {
+  background: #c0c0c0;
+}
