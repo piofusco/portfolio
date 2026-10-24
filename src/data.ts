@@ -118,10 +118,11 @@ export const workApps: WorkApp[] = [
   },
   {
     name: "Specialized Rider App",
-    company: "Specialized",
+    company: "Specialized, via Pivotal Labs",
     icon: "/work/specialized.jpg",
     appStore: "https://apps.apple.com/us/app/specialized/id1587051382",
-    summary: "iOS app for Specialized riders and their bikes.",
+    summary:
+      "Built the iOS app alongside ANGI, a Bluetooth crash sensor (since deprecated). One of the few apps from that era still on the App Store.",
   },
   {
     name: "Ibotta",
@@ -151,7 +152,7 @@ export const experience: Job[] = [
   {
     role: "Staff iOS Engineer",
     company: "Gusto",
-    dates: "Present",
+    dates: "Jun 2026 – Present",
     summary: "",
     highlights: [],
   },
