@@ -48,7 +48,7 @@ export function describe(program: Program): ProgramInfo {
         id: `app-${program.name}`,
         title: app.name,
         icon: <Image src={app.icon} alt="" width={16} height={16} />,
-        width: 720,
+        width: appWindowWidth(app),
         height: 620,
         dialog: false,
       };
@@ -78,6 +78,11 @@ export function describe(program: Program): ProgramInfo {
     case "denied":
       return { id: `denied-${program.repo}`, title: "Error", icon: null, width: 380, height: 150, dialog: true };
   }
+}
+
+// Wide enough to show every screenshot (145px each, plus padding), within reason.
+function appWindowWidth(app: App): number {
+  return Math.min(45 + app.screenshots.length * 145, 1000);
 }
 
 function findApp(name: string): App {
