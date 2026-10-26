@@ -2,7 +2,7 @@
 
 export const profile = {
   name: "Michael Pace",
-  title: "Senior iOS Engineer",
+  title: "Staff iOS Engineer",
   location: "Denver, CO",
   email: "terinopace@gmail.com",
   linkedin: "https://www.linkedin.com/in/americopace/",
@@ -10,7 +10,7 @@ export const profile = {
   resume: "/michael-pace-resume.pdf",
   photo: "/profile.jpg",
   summary:
-    "Senior iOS engineer with over a decade of experience building and scaling mobile apps across greenfield, legacy, and high-traffic environments. I care about clean architecture, automated testing, and tooling that makes teams faster.",
+    "Staff iOS engineer with over a decade of experience building and scaling mobile apps across greenfield, legacy, and high-traffic environments. I care about clean architecture, automated testing, and tooling that makes teams faster.",
 };
 
 export type App = {
@@ -153,8 +153,15 @@ export const experience: Job[] = [
     role: "Staff iOS Engineer",
     company: "Gusto",
     dates: "Jun 2026 – Present",
-    summary: "",
-    highlights: [],
+    summary: "Own testing infrastructure, the design-system rollout, and new features across Gusto's modular iOS app.",
+    highlights: [
+      "Set the iOS org's Swift Testing strategy and led the migration from XCTest across 25+ modules. Local tests run up to 22% faster, and CI guards block regressions to old patterns.",
+      "Built improve-testability, an agentic skill that finds flaky tests and rewrites them as deterministic Swift Testing, verified with a build and opened as a PR.",
+      "Built Understudy, a local mock backend shared by iOS and Android, so mobile engineers can build against an agreed API before the backend ships it.",
+      "Built career-copilot, an org-wide plugin that turns an employee's activity into a recurring brag doc mapped to their role's expectations.",
+      "Drove the iOS side of a company-wide brand refresh, moving 10+ feature modules to the shared component library with SwiftLint rules that enforce design tokens.",
+      "Shipped iPhone Duo and iPad support, multi-bank account management, California SB 553 compliance, and a redesigned employer home screen.",
+    ],
   },
   {
     role: "Staff iOS Engineer",
@@ -166,7 +173,8 @@ export const experience: Job[] = [
       "Delivered a full greenfield rebuild of a decade-old iOS app, growing monthly revenue to $1M with a 4.8+ App Store rating.",
       "Built a high-frequency WebSocket consumer processing hundreds of market updates per second at 60fps.",
       "Established MVVM+R coding standards enabling parallel development for 10+ engineers.",
-      "Designed a schema-governed API contract for page feeds, saving thousands of engineering hours.",
+      "Got dozens of engineers contributing within two months by documenting and simplifying a complex Kotlin Multiplatform codebase.",
+      "Increased automated test coverage across iOS, Android, and Kotlin Multiplatform, reducing regressions and manual QA.",
     ],
   },
   {
@@ -175,9 +183,9 @@ export const experience: Job[] = [
     dates: "Jan 2022 – Sep 2022",
     summary: "Modernized legacy iOS apps and introduced testing and automation that stabilized the platform.",
     highlights: [
-      "Reduced regressions by 40% by requiring tests on all new and modified code.",
+      "Reduced regressions by 40% and cut hotfixes by requiring tests on all new and modified code.",
       "Refactored Ads & Leads apps, cutting crash rates by 25%.",
-      "Automated regression tests with Sinatra and UI testing, saving ~30 QA hours/month.",
+      "Automated regression tests with Ruby/Sinatra and UI testing, saving ~30 QA hours/month.",
     ],
   },
   {
@@ -222,6 +230,7 @@ export const skills = [
   "Kotlin",
   "XCTest",
   "Swift Testing",
+  "Snapshot Testing",
   "TDD",
   "XcodeGen",
   "Fastlane",

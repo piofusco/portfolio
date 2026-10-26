@@ -11,7 +11,7 @@ const navLinks = [
 ];
 
 export const metadata: Metadata = {
-  title: "Michael Pace — Senior iOS Engineer (Classic)",
+  title: "Michael Pace — Staff iOS Engineer (Classic)",
 };
 
 export default function Classic() {
