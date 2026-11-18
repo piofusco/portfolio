@@ -9,7 +9,7 @@ export default function SkrongPrivacyPolicy() {
     <>
       <header>
         <h1 className="text-3xl font-semibold tracking-tight">Privacy Policy</h1>
-        <p className="mt-1 text-muted">Skrong — Effective Date: November 16, 2026</p>
+        <p className="mt-1 text-muted">Skrong — Effective Date: November 18, 2026</p>
       </header>
 
       <h2>1. Introduction</h2>
@@ -84,8 +84,29 @@ export default function SkrongPrivacyPolicy() {
         interval alerts. Notifications are created on your device and are not sent through our servers.
       </p>
 
+      <h3>Feedback You Send Us</h3>
+      <p>
+        If you choose to send feedback through the feedback link in the App, it opens a form on our website. We receive
+        only what you submit:
+      </p>
+      <ul>
+        <li>Your message and the feedback category you pick</li>
+        <li>Any screenshots you attach</li>
+        <li>Your email address, if you choose to give it so we can reply</li>
+        <li>Your App version, iOS version, and device model, which the App adds to help us fix problems</li>
+      </ul>
+      <p>
+        We use this information only to respond to you and improve Skrong. Submissions are stored privately with our
+        hosting provider, Vercel, and delivered to our support inbox by our email provider, Resend. We keep feedback
+        only as long as we need it, and you can ask us to delete yours at any time by emailing{" "}
+        <a href="mailto:support@michaelpace.dev">support@michaelpace.dev</a>. Sending feedback is always optional.
+      </p>
+
       <h3>Information We Do Not Collect</h3>
-      <p>We do not collect, transmit, or store any of the following on our servers:</p>
+      <p>
+        Apart from feedback you choose to send, we do not collect, transmit, or store any of the following on our
+        servers:
+      </p>
       <ul>
         <li>Personal identifiers (name, email address, phone number)</li>
         <li>Location data</li>
@@ -105,12 +126,16 @@ export default function SkrongPrivacyPolicy() {
       <h2>4. How We Use Your Information</h2>
       <p>
         Because your data remains on your device (or in your personal iCloud Drive), Americo LLC does not use your
-        data for any purpose. We have no access to it. The App uses your data on your device only to provide its
+        data for any purpose. We have no access to it. The only exception is feedback you choose to send, which we use
+        to respond to you and improve Skrong. The App uses your data on your device only to provide its
         features, such as running workouts and timers, showing your history and analytics, and generating insights.
       </p>
 
       <h2>5. Data Sharing and Disclosure</h2>
-      <p>We do not sell, rent, or share your personal information with third parties. We have no user data to share.</p>
+      <p>
+        We do not sell, rent, or share your personal information with third parties. Apart from feedback you choose to
+        send, we have no user data to share.
+      </p>
       <p>
         You may choose to share your own data, for example by exporting your workout history or a workout as text and
         sending it through the iOS share sheet or clipboard. Anything you share this way goes only where you send it.
@@ -121,12 +146,9 @@ export default function SkrongPrivacyPolicy() {
         <li>Apple iCloud Drive — for optional backups, if you create them</li>
         <li>Apple HealthKit — for reading and writing health data, if you enable it</li>
         <li>Apple Intelligence — for on-device insights and text import, on supported devices</li>
+        <li>Vercel — for hosting our website and storing feedback you send</li>
+        <li>Resend — for delivering feedback you send to our support inbox</li>
       </ul>
-      <p>
-        If you choose to send feedback through the feedback link in the App, it opens a Google Form. Anything you
-        submit there is shared voluntarily and is subject to Google&rsquo;s Privacy Policy (
-        <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>).
-      </p>
 
       <h2>6. Data Retention and Deletion</h2>
       <p>
@@ -139,7 +161,10 @@ export default function SkrongPrivacyPolicy() {
         <li>Uninstalling Skrong from your device</li>
         <li>Deleting data Skrong wrote to Apple Health from the Health app</li>
       </ul>
-      <p>Americo LLC does not retain any copies of your data on external servers.</p>
+      <p>
+        Americo LLC does not retain any copies of your App data on external servers. To delete feedback you sent, email{" "}
+        <a href="mailto:support@michaelpace.dev">support@michaelpace.dev</a>.
+      </p>
 
       <h2>7. Children&rsquo;s Privacy</h2>
       <p>
@@ -168,7 +193,7 @@ export default function SkrongPrivacyPolicy() {
       <p>
         Americo LLC
         <br />
-        <a href="mailto:terinopace@gmail.com">terinopace@gmail.com</a>
+        <a href="mailto:support@michaelpace.dev">support@michaelpace.dev</a>
       </p>
     </>
   );

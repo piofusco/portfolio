@@ -185,7 +185,7 @@ export default function SkrongTermsAndConditions() {
       <p>
         Americo LLC
         <br />
-        <a href="mailto:terinopace@gmail.com">terinopace@gmail.com</a>
+        <a href="mailto:support@michaelpace.dev">support@michaelpace.dev</a>
       </p>
     </>
   );
