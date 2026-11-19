@@ -10,7 +10,7 @@ export const profile = {
   resume: "/michael-pace-resume.pdf",
   photo: "/profile.jpg",
   summary:
-    "Staff iOS engineer with over a decade of experience building and scaling mobile apps across greenfield, legacy, and high-traffic environments. I care about clean architecture, automated testing, and tooling that makes teams faster.",
+    "Staff iOS engineer with over a decade of experience building and scaling mobile apps across greenfield, legacy, and high-traffic environments. I care about clean architecture, automated testing, and tooling that makes teams faster. Currently building Gusto's iOS app.",
 };
 
 export type App = {
@@ -30,13 +30,15 @@ function screenshots(app: string, count: number): string[] {
 
 export const apps: App[] = [
   {
-    name: "Secnds",
-    tagline: "Interval timer built for people who actually work out",
+    name: "Skrong",
+    tagline: "Workout tracker and interval timer built for people who actually work out",
     description:
-      "HIIT, circuit, and round timers plus gym workouts with sets, reps, and supersets. Spoken interval coaching, Apple Health logging, and your music keeps playing.",
-    icon: "/apps/secnds/icon.png",
-    screenshots: screenshots("secnds", 10),
-    appStore: "https://apps.apple.com/us/app/secnds/id6758421780",
+      "Gym workouts with sets, reps, and supersets, programs with progression rules, and HIIT, circuit, and round timers. Spoken interval coaching, Apple Health logging, and your music keeps playing.",
+    icon: "/apps/skrong/icon.png",
+    screenshots: ["active-workout", "hiit", "programs", "exercises", "supersets", "export"].map(
+      (shot) => `/skrong/iphone/${shot}.png`,
+    ),
+    appStore: "https://apps.apple.com/us/app/id6758421780",
     tags: ["SwiftUI", "SwiftData", "Swift 6", "HealthKit", "StoreKit"],
   },
   {
@@ -100,6 +102,14 @@ export type WorkApp = {
 
 // Apps I worked on as an employee or consultant.
 export const workApps: WorkApp[] = [
+  {
+    name: "Gusto Mobile",
+    company: "Gusto",
+    icon: "/work/gusto.jpg",
+    appStore: "https://apps.apple.com/us/app/gusto-mobile/id1478804271",
+    summary:
+      "Currently building Gusto's iOS app: testing infrastructure, the design-system rollout, and iPhone Duo and iPad support.",
+  },
   {
     name: "Fanatics Sportsbook",
     company: "Fanatics",

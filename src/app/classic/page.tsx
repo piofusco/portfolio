@@ -50,7 +50,7 @@ export default function Classic() {
             ))}
           </div>
         </Section>
-        <Section id="work" title="Apps I've worked on" subtitle="At Fanatics, Specialized, Ibotta, and Angi">
+        <Section id="work" title="Apps I've worked on" subtitle="At Gusto, Fanatics, Specialized, Ibotta, and Angi">
           <div className="grid gap-4 sm:grid-cols-2">
             {workApps.map((app) => (
               <a
