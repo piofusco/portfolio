@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://michaelpace.dev"),
   title: "Michael Pace — Staff iOS Engineer",
   description:
     "Portfolio of Michael Pace, a Denver-based staff iOS engineer. Apps, open source, and resume.",
